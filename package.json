@@ -1,0 +1,27 @@
+{
+  "name": "gamerfes",
+  "version": "1.0.0",
+  "description": "Nodejs Express Mysql",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "server": "nodemon index.js"
+  },
+  "keywords": [
+    "Nodejs",
+    "Express",
+    "Mysql"
+  ],
+  "author": "IsaacDrp",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mariadb": "^3.4.0",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.5"
+  }
+}
