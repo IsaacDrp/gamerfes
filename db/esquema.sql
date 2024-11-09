@@ -52,7 +52,7 @@ CREATE TABLE videojuegos (
     description TEXT,
     
     release_date DATE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    image_src VARCHAR(50)
 );
 
 -- Tabla de plataformas

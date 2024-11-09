@@ -2,9 +2,11 @@ extends layout/index
 
 block content
   section.product-list
-    each product in products
-      article.product
-        img(src=product.image_url, alt=product.name)
-        h2= product.name
-        p= product.description
-        span.price= "$" + product.price
+    if videojuego && videojuego.length > 0
+      each juego in videojuego
+        article.product
+          img(src=juego.image_src, alt=juego.title)
+          h2= juego.title
+          span.release-date= juego.release_date
+    else
+      p No hay videojuegos disponibles
