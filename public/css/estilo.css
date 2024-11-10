@@ -1,0 +1,218 @@
+/* Tipografía */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Estilizamos la barra de navegación y el footer */
+.navegacion {
+    background-color: rgba(32, 32, 32, 0.9);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* sombra sutil para darle relieve */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 8px 15px;
+}
+
+nav .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+nav .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* efecto de hover */
+}
+
+#imgUsuario {
+    border-radius: 15px;
+}
+/* Estilo de la barra de navegación */
+.navegacion {
+    background-color: rgba(32, 32, 32, 0.9); /* Fondo oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+/* Estilo para enlaces y botones dentro de la navegación */
+.navegacion a {
+    margin: 10px;
+    color: white; /* Color del texto en los enlaces */
+    text-decoration: none;
+}
+
+.navegacion .btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.navegacion img {
+    border-radius: 5px;
+}
+
+.colorNav {
+    color: white; /* Color blanco para el texto */
+    font-weight: bold;
+}
+
+/* Ajustes para el tamaño y espaciado */
+.navegacion img {
+    width: 40px;
+    height: 40px;
+}
+
+.navegacion button {
+    display: flex;
+    align-items: center;
+}
+
+.navegacion p.colorNav {
+    margin: 0 10px;
+}
+
+
+/* Estilos para el juego */
+.titulo {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.tituloConsola {
+    font-family: "Abel", sans-serif;
+    font-size: 35px;
+}
+
+.contenidoPrincipal {
+    max-width: 100%;
+}
+
+.seccionJuegos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;  /* Alinea las tarjetas en filas con espacio */
+    margin: 20px;
+}
+
+/* Estilo para cada tarjeta de juego */
+.juegos {
+    margin: 20px;
+    width: 300px; /* Controla el tamaño de las tarjetas */
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+.juegos:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para la imagen del juego */
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Estilo para el contenido dentro de la tarjeta */
+.card-body {
+    padding: 15px;
+}
+
+.card-body h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Estilo para el botón "Agregar al carrito" */
+.juego {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.juego:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el mensaje "No hay videojuegos disponibles" */
+.seccionJuegos p {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #dc3545;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: rgba(32, 32, 32, 0.9);
+    padding: 15px 0;
+    text-align: center;
+}
+
+footer ul.nav {
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+footer li.nav-item {
+    margin: 0 5px;
+}
+
+footer .nav-link img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+footer .nav-link:hover img {
+    transform: scale(1.1);
+}

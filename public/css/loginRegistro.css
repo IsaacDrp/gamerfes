@@ -1,0 +1,60 @@
+/* Tipografía*/
+    
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+    body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+    font-family: "Quicksand", sans-serif;
+    background: rgb(42,43,43);
+    background: linear-gradient(90deg, rgba(42,43,43,1) 0%, rgba(86,94,98,1) 46%, rgba(57,57,60,1) 80%);
+    }
+
+/* Estilizamos el formulario de registro*/
+
+    main{
+        margin-left: 450px;
+        background: white;
+        width: 35%;
+        border-radius: 20px;
+    }
+    #titulo{
+        font-size: 28px;
+        margin-left: 160px;
+    }
+    #formulario{
+        display: flex;
+        flex-direction:column;
+        font-size: 25px;
+        margin-left: 45px;
+    }
+    
+    .Baseinputs{margin: 25px;} 
+    .entrada{margin-top: 25px;}
+    input{
+        width: 320px;
+        height: 30px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+    }
+
+    #enviar{
+        width: 90px; 
+        font-size: 22px;
+        border-radius: 13px;
+    }
+    #boton{
+        margin-left: 130px;
+        margin-top: 25px;
+        font-family: "Quicksand", sans-serif;
+    }
+    #enviar{width: 100px;}
+
+    /* Estilizamos el formulario de inicio de secion*/
+
+    #botonLogin{
+        margin-left: 60px;
+        margin-top: 25px;
+    }

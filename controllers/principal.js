@@ -13,5 +13,6 @@ async function principal (req, res) {
     videojuego : videojuegos
   })
 }
-  export { principal };
+
+export { principal };
   

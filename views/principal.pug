@@ -1,12 +1,17 @@
-extends layout/index
+extends layout/index.pug
 
 block content
-  section.product-list
+  section.seccionJuegos
+    //- Juego 1
     if videojuego && videojuego.length > 0
       each juego in videojuego
-        article.product
-          img(src=juego.image_src, alt=juego.title)
-          h2= juego.title
-          span.release-date= juego.release_date
-    else
+        .juegos
+          .card
+            img(src=juego.image_src, alt=juego.title, width="500px", class="card-img-top")
+            .card-body
+              h4= juego.title
+              p.release-date= juego.release_date 
+              center
+                button.btn.btn-dark.juego(data-id="1") Agregar al carrito
+    else 
       p No hay videojuegos disponibles

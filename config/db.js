@@ -1,5 +1,9 @@
 import { Sequelize } from "sequelize";
-const db = new Sequelize('gamerfes','root', 'isaac',{
+import dotenv from 'dotenv';
+
+dotenv.config({path: '.env'});
+
+const db = new Sequelize(process.env.BD_NOMBRE,process.env.BD_USUARIO, process.env.BD_CLAVE,{
     dialect:'mariadb',
     dialectOptions:{
         host:'127.0.0.1',

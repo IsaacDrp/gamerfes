@@ -3,7 +3,7 @@ import db from "../config/db.js";
 
 
 export const Videojuego = db.define (
-    "videojuegos",{
+    "videojuego",{
         game_id:{
             type: Sequelize.INTEGER,
             autoIncrement: true,
@@ -22,7 +22,11 @@ export const Videojuego = db.define (
             type: Sequelize.STRING
         }
     },
-    {timestamps: false}
+    {
+        timestamps: false,
+        freezeTableName: true, // Evita la pluralización automática del nombre de la tabla
+        tableName: "videojuegos",  // Especifica el nombre exacto de la tabla en la base de datos
+    }
 );
 
 export default Videojuego;
