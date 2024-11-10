@@ -1,0 +1,17 @@
+extends ../layout/index
+
+block content
+  section.register-container
+    h2 Registro
+    form(action="/altaUsuario", method="POST")
+      label(for="username") Nombre de Usuario
+      input(type="text", name="username", required, placeholder="Introduce tu nombre de usuario")
+      label(for="apellido_paterno") Apellido Paterno
+      input(type="text", name="apellido_paterno", required, placeholder="Introduce tu apellido paterno")
+      label(for="apellido_materno") Apellido Materno
+      input(type="text", name="apellido_materno", required, placeholder="Introduce tu apellido materno")
+      label(for="email") Email
+      input(type="email", name="email", required, placeholder="Introduce tu correo electrónico")
+      label(for="passwd") Contraseña
+      input(type="password", name="passwd", required, placeholder="Introduce tu contraseña")
+      button(type="submit") Registrarse

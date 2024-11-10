@@ -2,6 +2,7 @@ import express from "express";
 //import session from "express-session";
 import router_principal from "./routes/principal_router.js";
 import db from "./config/db.js";
+import router_crud_ingreso from "./routes/Crud_ingreso.js";
 
 // creamos la aplicacion
 const app = express();
@@ -17,8 +18,15 @@ app.set("views","./views");
 // Carpeta publica
 app.use(express.static("public"));
 
+// Configurar middleware para procesar datos del formulario
+app.use(express.urlencoded({ extended: true }));
+
+// Configurar middleware para procesar datos JSON
+app.use(express.json());
+
 // Routing
 app.use("/", router_principal);
+app.use("/ingreso", router_crud_ingreso);
 
 // Direccion ip y puerto
 const port    = '6123';

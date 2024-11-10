@@ -23,13 +23,13 @@ export const Videojuego_plataforma = db.define (
             type: Sequelize.INTEGER
         }
     }, {timestamps: false}
-)
+);
 
 Videojuego.hasOne(Videojuego_plataforma, {
     foreignKey: {
         name: "game_id"
     }
-})
+});
 
 Videojuego_plataforma.belongsTo(Videojuego,{
     foreignKey:{
@@ -40,7 +40,7 @@ Plataforma.hasOne(Videojuego_plataforma, {
     foreignKey: {
         name: "platform_id"
     }
-})
+});
 
 Videojuego_plataforma.belongsTo(Plataforma,{
     foreignKey:{
@@ -48,3 +48,4 @@ Videojuego_plataforma.belongsTo(Plataforma,{
     },
 });
 
+export default Videojuego_plataforma;

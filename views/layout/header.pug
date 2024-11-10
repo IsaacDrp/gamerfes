@@ -5,6 +5,9 @@ header.top-bar
     input(type="text", placeholder="Buscar videojuegos...") 
     button(type="submit") Buscar
   div.panels
-    button#user-panel-toggle Usuario
-    button#orders-panel-toggle Pedidos
-    button#cart-panel-toggle Carrito
+    a(href="/ingreso/registro")
+      button#user-panel-toggle Usuario
+    a(href="/pedidos")
+      button#orders-panel-toggle Pedidos
+    a(href="/carrito")
+      button#cart-panel-toggle Carrito

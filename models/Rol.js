@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/db";
+import db from "../config/db.js";
 
 export const Rol = db.define (
     "rol", {
@@ -15,3 +15,5 @@ export const Rol = db.define (
             type: Sequelize.STRING
         }
 });
+
+export default {Rol};
