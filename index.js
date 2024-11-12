@@ -3,6 +3,7 @@ import express from "express";
 import router_principal from "./routes/principal_router.js";
 import db from "./config/db.js";
 import router_crud_ingreso from "./routes/Crud_ingreso.js";
+import router_usuario from "./routes/Usuario_router.js";
 
 // creamos la aplicacion
 const app = express();
@@ -27,6 +28,7 @@ app.use(express.json());
 // Routing
 app.use("/", router_principal);
 app.use("/ingreso", router_crud_ingreso);
+app.use("/info", router_usuario);
 
 // Direccion ip y puerto
 const port    = '6123';

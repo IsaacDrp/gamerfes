@@ -216,3 +216,31 @@ footer .nav-link img {
 footer .nav-link:hover img {
     transform: scale(1.1);
 }
+
+/*Estilos especificos de usuarios*/
+
+    .btnColapso{width: 100%;}
+    .btnColapso:hover{background: #a5a4a4;}
+    .textoBoton{
+        font-size: 19px;
+        font-family:  "Quicksand", sans-serif;
+    }
+    .colapso{margin-top: 20px;}
+    .contenidoColapso{
+        margin-top: 35px;
+        margin-left: 15%;
+    }
+    .row{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .form-control{width: 100%;}
+    .form-select{width: 100%;}
+    .btnFormu{
+        width: 50%;
+        margin-top: 20px;
+    }
+    .btnFormulario{
+        margin-left: 35%; 
+        width: 25%;
+    }

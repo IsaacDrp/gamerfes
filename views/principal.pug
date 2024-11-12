@@ -10,7 +10,7 @@ block content
             img(src=juego.image_src, alt=juego.title, width="500px", class="card-img-top")
             .card-body
               h4= juego.title
-              p.release-date= juego.release_date 
+              span.release-date= juego.description
               center
                 button.btn.btn-dark.juego(data-id="1") Agregar al carrito
     else 
