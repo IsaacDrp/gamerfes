@@ -1,0 +1,83 @@
+/*Tipografía*/
+    
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+body{
+    margin:0px;
+    padding: 0px;
+    box-sizing: content-box;
+    
+}
+
+/* Estilisamos la barra de navegacion y el footer*/
+
+    .navegacion{
+        font-size: 20px;
+        background-color: rgba(32,32,32,0.9);
+    }
+    nav{
+        display: flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 310px;
+    }
+    a{
+        margin: 30px;
+    }
+
+    .colorNav{
+        color: white;
+    }
+
+    p{
+        font-family: "M PLUS Rounded 1c", sans-serif;
+    }
+
+    #imgUsuario{border-radius: 15px;}
+
+/*Estilisamos la parte de los juegos */
+
+    .titulo{margin-left: 590px; margin-top: 40px;}
+    .tituloConsola{
+        font-family: "Abel", sans-serif;
+        font-size: 35px;
+    }
+    .contenidoPrincipal{max-width: 100%;}
+
+    .seccionJuegos{
+        margin: 60px;
+        margin-left: 80px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+    .juegos{margin: 40px;}
+
+    .card-body{width: 500px;}
+
+    /*Estilizamos la tabla donde mostramos los productos */
+
+    .botonesCarrito{
+        margin-left: 400px;
+    }
+    .carrito{
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 250px;
+    }
+
+/*Estilisamos la parte de cambio de seccion*/
+    .secciones{margin-left: 36%;}
+    .btnSeccion{
+        border-radius: 20px;
+        margin: 20px;
+        width: 70px;}
+
+    
+/*  Estilisamos el pie de pagina */
+    footer{
+        background-color: rgba(32,32,32,0.9);
+    }
