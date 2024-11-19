@@ -31,7 +31,7 @@ app.use("/ingreso", router_crud_ingreso);
 app.use("/info", router_usuario);
 
 // Direccion ip y puerto
-const port    = '6123';
+const port    = '8902';
 
 app.listen(port, () =>{
     console.log(`Esperando peticiones en el puerto ${port}`);
