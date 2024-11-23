@@ -16,9 +16,10 @@
             <a href="#"><button class="btn"><p class="colorNav">NINTENDO</p></button></a>
             <a href="#"><button  class="btn"><p class="colorNav">PLAYSTATION</p></button></a>
             <a href="#"><button class="btn"><p class="colorNav">XBOX</p></button></a>
-            <button class="btn"><img src="../../../public/IMG/verificar.png" width="40" height="40"></button>
-            <a href="../../usuario/usuario.html"><img src="../../../public/IMG/usuario.png" id="imgUsuario" width="40" height="40" alt="usuario"></a>
+            <a href="../../usuario/infoUsuario/usuario.html"><img src="../../../public/IMG/usuario.png" id="imgUsuario" width="40" height="40" alt="usuario"></a>
+            <button class="btn" id="carrito"><img src="../../../public/IMG/carrito.png" width="40" height="40"></button>
         </nav>
+        <div id="cesta"></div>
     </header>
    <main class="contenidoPrincipal">
         <div class="titulo">
@@ -26,91 +27,101 @@
         </div>
         <section class="seccionJuegos">
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/among.jpeg" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/among.jpeg" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>AMONG US</h4>
+                        <h5>AMONG US</h5>
                         <p class="card-text">$100.00MX</p>
-                        <center><button class="btn btn-dark juego" data-id=1>Agregar al carrito</button></center>
+                        <center><button class="botonCard" id="juego1" data-id=1>Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/mariobrosWonder.webp" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/mariobrosWonder.webp" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>SUPER MARIO BROS WONDER</h4>
+                        <h5>SUPER MARIO BROS WONDER</h5>
                         <p class="card-text">$700.00MX</p>
-                        <center><button class="btn btn-dark juego2" data-id="2">Agregar al carrito</button></center>
+                        <center><button class="botonCard" id="juego2" data-id="2">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/marioKart.avif" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/marioKart.avif" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>Mario Kart 8 DELUXE</h4>
+                        <h5>Mario Kart 8 DELUXE</h5>
                         <p class="card-text">$800.00MX</p>
-                        <center><button class="btn btn-dark juego3" data-id="3">Agregar al carrito</button></center>
+                        <center><button class="botonCard" id="juego3" data-id="3">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/marioVSdonke.jpg" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/marioVSdonke.jpg" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>Mario vs Donkey Kong</h4>
+                        <h5>Mario vs Donkey Kong</h5>
                         <p class="card-text">$760.00MX</p>
-                        <center><button  class="btn btn-dark juego4" data-id="4">Agregar al carrito</button></center>
+                        <center><button  class="botonCard" id="juego4" data-id="4">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/smahsBros.jpg" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/smahsBros.jpg" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>SUPER SMAHS BROS ULTIMATE</h4>
+                        <h5>SUPER SMAHS BROS ULTIMATE</h5>
                         <p class="card-text">$800.00MX</p>
-                        <center><button  class="btn btn-dark juego5" id="juego" data-id="5">Agregar al carrito</button></center>
+                        <center><button  class="botonCard" id="juego5" data-id="5">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/zeldaKingdom.avif" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/zeldaKingdom.avif" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>THE LEGEND OF ZELDA</h4>
+                        <h5>THE LEGEND OF ZELDA</h5>
                         <p class="card-text">$800MX</p>
-                        <center><button  class="btn btn-dark juego6" data-id="6">Agregar al carrito</button></center>
+                        <center><button  class="botonCard" id="juego6" data-id="6">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/marioParty.avif" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/zeldaEchoes.avif" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>SUPER MARIO PARTY JAMBOREE</h4>
+                        <h5>THE LEGEND OF ZELDA ECHOES</h5>
                         <p class="card-text">$900MX</p>
-                        <center><button  class="btn btn-dark juego6" data-id="6">Agregar al carrito</button></center>
+                        <center><button  class="botonCard" id="juego7" data-id="7">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
             <div class="juegos"> 
-                <div class="card" style="width: 500px;">
-                    <img src="../../../public/IMG/nintendo/detectivePikachu.avif" width="500px" alt="shopGame">
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/detectivePikachu.avif" width="398px" alt="shopGame" class="cardIMG">
                     <div class="card-body">
-                        <h4>DETECTIVE PICKACHU: EL REGRESO</h4>
+                        <h5>DETECTIVE PICKACHU: EL REGRESO</h5>
                         <p class="card-text">$850MX</p>
-                        <center><button  class="btn btn-dark juego6" data-id="6">Agregar al carrito</button></center>
+                        <center><button  class="botonCard" id="juego8" data-id="8">Agregar al carrito</button></center>
+                    </div>
+                </div>
+            </div>
+               <div class="juegos"> 
+                <div class="card" style="width: 400px;">
+                    <img src="../../../public/IMG/nintendo/marioParty.avif" width="398px" alt="shopGame" class="cardIMG">
+                    <div class="card-body">
+                        <h5>SUPER MARIO PARTY JAMBOREE</h5>
+                        <p class="card-text">$900MX</p>
+                        <center><button  class="botonCard" id="juego9" data-id="9">Agregar al carrito</button></center>
                     </div>
                 </div>
             </div>
         </section>
    </main>
    <div class="secciones">
-            <button class="btn  btn-outline-dark btnSeccion" id="seccionBTN1">1</button>
-            <button  class="btn btn-outline-dark btnSeccion" id="seccionBTN2">2</button>
-            <button  class="btn btn-outline-dark btnSeccion" id="seccionBTN3">3</button>
+            <a href="nintendo.html" class="btn  btn-outline-dark btnSeccion" id="seccionBTN1">1</a>
+            <a href="nintendoDos.html" class="btn  btn-outline-dark btnSeccion" id="seccionBTN2">2</a>
+            <a href="nintendoTres.html" class="btn  btn-outline-dark btnSeccion" id="seccionBTN3">3</a>
    </div>
    <br>
    <br>
@@ -135,6 +146,6 @@
     </footer>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="../../public/JS/nintendo/nintendo.js"></script>
+    <script src="../../../public/JS/productos/productos.js"></script>
 </body>
 </html>

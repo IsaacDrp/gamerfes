@@ -1,4 +1,3 @@
-let cliks = 0;
 // variables generales
     const infoPersonal = document.querySelector("#infoPersonal");
     const verDomicilio = document.querySelector("#verDomicilio");
