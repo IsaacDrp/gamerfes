@@ -1,32 +1,26 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js";
 
-
-export const Videojuego = db.define (
-    "videojuego",{
-        game_id:{
+export const Videojuego = db.define(
+    "videojuegos",
+    {
+        game_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         title: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         description: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT,
         },
         release_date: {
-            type: Sequelize.STRING
+            type: Sequelize.DATE,
         },
-        image_src: {
-            type: Sequelize.STRING
-        }
     },
-    {
-        timestamps: false,
-        freezeTableName: true, // Evita la pluralización automática del nombre de la tabla
-        tableName: "videojuegos",  // Especifica el nombre exacto de la tabla en la base de datos
-    }
+    { timestamps: false }
 );
 
 export default Videojuego;

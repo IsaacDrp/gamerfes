@@ -1,19 +1,23 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js";
 
-export const Rol = db.define (
-    "rol", {
+export const Rol = db.define(
+    "roles",
+    {
         role_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         descripcion: {
-            type: Sequelize.STRING
-        }
-});
+            type: Sequelize.TEXT,
+        },
+    },
+    { timestamps: false }
+);
 
-export default {Rol};
+export default Rol;

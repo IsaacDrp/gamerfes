@@ -1,54 +1,59 @@
 import { Sequelize } from "sequelize";
-import db from "../config/db.js"
-import {Rol} from "./Rol.js";
+import db from "../config/db.js";
+import Rol from "./Rol.js";
+import Carrito from "./Carrito.js";
 
 export const Usuario = db.define(
-    "usuario",
+    "usuarios",
     {
         user_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         username: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         apellido_paterno: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         apellido_materno: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        telefonoUsuario: {
+            type: Sequelize.STRING(10),
+            allowNull: false,
         },
         email: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         passwd: {
-            type: Sequelize.STRING
-        },
-        created_at: {
-            type: Sequelize.DATE
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         role_id: {
-            type: Sequelize.STRING
+            type: Sequelize.INTEGER,
         },
     },
-    {
-        freezeTableName: true, // Evita la pluralización automática del nombre de la tabla
-        tableName: "usuario",  // Especifica el nombre exacto de la tabla en la base de datos
-    }
+    { timestamps: false }
 );
 
-
-Rol.hasOne(Usuario, {
-    foreignKey: {
-        name: "role_id"
-    }
+Rol.hasMany(Usuario, {
+    foreignKey: { name: "role_id" },
+});
+Usuario.belongsTo(Rol, {
+    foreignKey: { name: "role_id" },
 });
 
-Usuario.belongsTo(Rol,{
-    foreignKey:{
-        name:"role_id",
-    },
+Usuario.hasOne(Carrito, {
+    foreignKey: { name: "user_id" },
+});
+Carrito.belongsTo(Usuario, {
+    foreignKey: { name: "user_id" },
 });
 
-export default {Usuario};
+export default Usuario;

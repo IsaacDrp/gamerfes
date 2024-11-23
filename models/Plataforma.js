@@ -1,21 +1,23 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js";
 
-export const Plataforma = db.define (
-    "plataforma", {
+export const Plataforma = db.define(
+    "plataformas",
+    {
         platform_id: {
-            type : Sequelize.INTEGER,
-            autoIncrement : true,
-            primaryKey : true
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
         },
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         description: {
-            type: Sequelize.STRING
-        }
+            type: Sequelize.TEXT,
+        },
     },
-    {timestamps: false}
+    { timestamps: false }
 );
 
 export default Plataforma;

@@ -1,61 +1,28 @@
 import { Sequelize } from "sequelize";
-import {Usuario} from "./Usuario.js";
-import { Forma_pago } from "./Forma_pago.js";
-import db from "../config/db.js"
+import db from "../config/db.js";
 
-export const Carrito = db.define (
-    "carrito", {
+export const Carrito = db.define(
+    "carritos",
+    {
         cart_id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            primaryKey: true
-        },
-        user_id: {
-            type: Sequelize.INTEGER
+            primaryKey: true,
         },
         subtotal: {
-            type: Sequelize.DECIMAL(2,10)
+            type: Sequelize.DECIMAL(10, 2),
+            defaultValue: 0.0,
         },
         impuestos: {
-            type: Sequelize.DECIMAL(2,10)
+            type: Sequelize.DECIMAL(10, 2),
+            defaultValue: 0.0,
         },
         total: {
-            type: Sequelize.DECIMAL(2,10)
+            type: Sequelize.DECIMAL(10, 2),
+            defaultValue: 0.0,
         },
-        created_at: {
-            type: Sequelize.DATE
-        },
-        payment_method_id: {
-            type: Sequelize.INTEGER
-        }
     },
-    {timestamps: false}
+    { timestamps: false }
 );
-
-//relacion con el usuario
-Usuario.hasOne(Carrito, {
-    foreignKey: {
-        name: "user_id"
-    }
-});
-
-Carrito.belongsTo(Usuario, {
-    foreignKey: {
-        name: "user_id"
-    }
-});
-
-//relacion con la forma de pago
-Forma_pago.hasOne(Carrito, {
-    foreignKey: {
-        name: "payment_method_id"
-    }
-});
-
-Carrito.belongsTo(Forma_pago, {
-    foreignKey: {
-        name: "payment_method_id"
-    }
-});
 
 export default Carrito;

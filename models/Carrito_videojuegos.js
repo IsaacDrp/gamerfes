@@ -1,15 +1,26 @@
 import { Sequelize } from "sequelize";
-import db from "../config/db.js"
+import db from "../config/db.js";
+import Carrito from "./Carrito.js";
+import VideojuegoPlataforma from "./VideojuegoPlataforma.js";
 
-export const Carrito_videojuegos = db.define(
-    "carrito_videojuegos", {
-        cart_id: {
+export const CarritoVideojuegos = db.define(
+    "carrito_videojuegos",
+    {
+        quantity: {
             type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
+            allowNull: false,
         },
-        game_platform: {
-            type: Sequelize.INTEGER
-        }
-    }
+    },
+    { timestamps: false }
 );
+
+Carrito.belongsToMany(VideojuegoPlataforma, {
+    through: CarritoVideojuegos,
+    foreignKey: { name: "cart_id" },
+});
+VideojuegoPlataforma.belongsToMany(Carrito, {
+    through: CarritoVideojuegos,
+    foreignKey: { name: "game_platform" },
+});
+
+export default CarritoVideojuegos;
