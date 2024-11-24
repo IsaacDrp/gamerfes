@@ -1,0 +1,30 @@
+extends ./layout/index.pug
+
+block content
+  main.contenidoPrincipal
+    .container.mt-4
+      //- Contenedores con los botones principales
+      .colapso
+        button#infoPersonal.btn.btnColapso(type="button") 
+          p.textoBoton Información personal
+        #colapso1.contenidoColapso
+
+      .colapso
+        button#verDomicilio.btn.btnColapso(type="button") 
+          p.textoBoton Ver domicilios
+        #colapso2.contenidoColapso
+
+      .colapso
+        button#agregarDomicilio.btn.btnColapso(type="button") 
+          p.textoBoton Agregar domicilio
+        #colapso3.contenidoColapso
+
+      .colapso
+        button#verTarjeta.btn.btnColapso(type="button") 
+          p.textoBoton Ver tarjetas
+        #colapso4.contenidoColapso
+
+      .colapso
+        button#agregarTarjeta.btn.btnColapso(type="button") 
+          p.textoBoton Agregar tarjeta
+        #colapso5.contenidoColapso

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+/* Estilos específicos de usuarios */
+.btnColapso {
+    width: 100%;
+}
+
+.btnColapso:hover {
+    background: #a5a4a4;
+}
+
+.textoBoton {
+    font-size: 19px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.colapso {
+    margin-top: 20px;
+}
+
+.contenidoColapso {
+    margin-top: 35px;
+    margin-left: 15%;
+}
+
+.row {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.form-select {
+    width: 100%;
+}
+
+.btnFormu {
+    width: 50%;
+    margin-top: 20px;
+}
+
+.btnFormulario {
+    margin-left: 35%;
+    width: 25%;
+}

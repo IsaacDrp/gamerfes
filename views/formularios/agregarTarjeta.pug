@@ -1,0 +1,26 @@
+form#tarjetaForm(action="/tarjetas" method="POST")
+  .mb-3
+    label(for="tarjeta_tipo" class="form-label") Tipo de tarjeta
+    select#tarjeta_tipo(name="tarjeta_tipo" class="form-select" required)
+      option(value="" selected disabled) Seleccione el tipo de tarjeta
+      option(value="Crédito") Crédito
+      option(value="Débito") Débito
+
+  .mb-3
+    label(for="card_number" class="form-label") Número de tarjeta
+    input#card_number(type="text" name="card_number" class="form-control" required maxlength="16" minlength="16" pattern="[0-9]{16}" placeholder="Ingrese el número de la tarjeta")
+    small.text-muted El número debe contener exactamente 16 dígitos.
+
+  .mb-3
+    label(for="fecha_vencimiento" class="form-label") Fecha de vencimiento
+    input#fecha_vencimiento(type="month" name="fecha_vencimiento" class="form-control" required)
+    small.text-muted Seleccione el mes y año de vencimiento.
+
+  .mb-3
+    label(for="cvv" class="form-label") Código CVV
+    input#cvv(type="text" name="cvv" class="form-control" required maxlength="3" minlength="3" pattern="[0-9]{3}" placeholder="Ingrese el código CVV")
+    small.text-muted Ingrese el código de seguridad de 3 dígitos.
+
+  .d-grid.gap-2.d-md-flex.justify-content-md-end
+    button(type="submit" class="btn btn-primary btnFormu") Guardar
+    button(type="reset" class="btn btn-secondary btnFormu") Limpiar

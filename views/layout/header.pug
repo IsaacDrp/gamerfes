@@ -1,0 +1,14 @@
+header.navegacion
+  nav
+    a(href='/')
+      img(src='/img/consola.png' width='40' height='40' alt='shopGame')
+    .buscar
+      br
+      form.buscar(action="/buscar" method="GET")
+        input#estado(type="text" name="juego" class="form-control" required maxlength="255" placeholder="Busca tu juego favorito")
+        button(type="submit" style="display:none") Buscar
+    a(href='/infoUsuario')
+      img#imgUsuario(src='/img/usuario.png' width='40' height='40' alt='usuario')
+    button#carrito.btn
+      img(src='/img/carrito.png' width='40' height='40')
+  #cesta

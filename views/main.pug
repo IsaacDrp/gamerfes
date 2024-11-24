@@ -1,0 +1,21 @@
+extends ./layout/index.pug
+
+block content
+  main.contenidoPrincipal
+    .titulo
+      h1.tituloConsola NINTENDO
+    section.seccionJuegos
+      each juego in juegos
+        .juegos
+          .card(style='width: 400px;')
+            img.cardIMG(src=`img/${juego.img}` width='398px' alt='shopGame')
+            .card-body
+              h5= juego.nombre
+              p.card-text $#{juego.precio}MX
+              center
+                button.botonCard(data-id=juego.id) Agregar al carrito
+    .secciones
+      each pagina, index in paginas
+        a.btn.btn-outline-dark.btnSeccion(href=pagina) #{index + 1}
+      br
+      br

@@ -1,0 +1,29 @@
+form#domicilioForm(action="/domicilios" method="POST")
+  .mb-3
+    label(for="estado" class="form-label") Estado
+    input#estado(type="text" name="estado" class="form-control" required maxlength="50" placeholder="Ingrese el estado")
+
+  .mb-3
+    label(for="ciudad" class="form-label") Ciudad
+    input#ciudad(type="text" name="ciudad" class="form-control" required maxlength="50" placeholder="Ingrese la ciudad")
+
+  .mb-3
+    label(for="codigoPostal" class="form-label") Código Postal
+    input#codigoPostal(type="text" name="codigoPostal" class="form-control" required maxlength="15" pattern="[0-9]{5,15}" placeholder="Ingrese el código postal")
+    small.text-muted Ejemplo: 12345
+
+  .mb-3
+    label(for="calle" class="form-label") Calle
+    input#calle(type="text" name="calle" class="form-control" required maxlength="30" placeholder="Ingrese la calle")
+
+  .mb-3
+    label(for="colonia" class="form-label") Colonia
+    input#colonia(type="text" name="colonia" class="form-control" required maxlength="40" placeholder="Ingrese la colonia")
+
+  .mb-3
+    label(for="numero" class="form-label") Número
+    input#numero(type="text" name="numero" class="form-control" required maxlength="10" placeholder="Ingrese el número")
+  
+  .d-grid.gap-2.d-md-flex.justify-content-md-end
+    button(type="submit" class="btn btn-primary btnFormu") Guardar
+    button(type="reset" class="btn btn-secondary btnFormu") Limpiar
