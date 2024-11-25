@@ -8,14 +8,10 @@ block content
       each juego in juegos
         .juegos
           .card(style='width: 400px;')
-            img.cardIMG(src=`img/${juego.img}` width='398px' alt='shopGame')
+            img.cardIMG(src=`/img/juegos/${juego.image_src}` width='398px' alt='shopGame')
             .card-body
-              h5= juego.nombre
-              p.card-text $#{juego.precio}MX
+              h5= juego.title 
+              p.card-text= juego.description
+              p= juego.image_src
               center
-                button.botonCard(data-id=juego.id) Agregar al carrito
-    .secciones
-      each pagina, index in paginas
-        a.btn.btn-outline-dark.btnSeccion(href=pagina) #{index + 1}
-      br
-      br
+                button.botonCard(data-id=juego.game_id) Agregar al carrito

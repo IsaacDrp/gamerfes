@@ -38,8 +38,34 @@ export const Usuario = db.define(
         role_id: {
             type: Sequelize.INTEGER,
         },
+        created_at: {
+            type: Sequelize.DATETIME,
+        },
+        updated_at: {
+            type: Sequelize.DATETIME,
+        },
+        confirmar: {
+            type: Sequelize.INTEGER,
+        },
+        token: {
+            type: Sequelize.STRING,
+        }
     },
-    { timestamps: false }
+    { 
+        hooks: {
+            beforeCreate: async function (usuario) {
+              const rep = await bcrypt.genSalt(10);
+              usuario.password = await bcrypt.hash(usuario.password, rep);
+            },
+          },
+          scopes: {
+            elimiarClave: {
+              attributes: {
+                exclude: ["token", "password", "confirmar", "id_rls"],
+              },
+            },
+          },
+    }
 );
 
 Rol.hasMany(Usuario, {
@@ -56,4 +82,7 @@ Carrito.belongsTo(Usuario, {
     foreignKey: { name: "user_id" },
 });
 
-export default Usuario;
+Usuario.prototype.verificandoClave = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  export default Usuario;
