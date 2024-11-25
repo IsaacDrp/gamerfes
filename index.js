@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import db from "./config/db.js";
 import routerInicio from "./routes/inicio_router.js";
 import usuario_router from "./routes/usuario_router.js";
+import Credenciales_router from "./routes/credenciales_router.js";
 
 // Conexión a la base de datos
 try {
@@ -45,6 +46,7 @@ app.use(express.static("public"));
 // Configurar rutas
 app.use("/", routerInicio);
 app.use("/usuario", usuario_router);
+app.use("/credenciales", Credenciales_router);
 
 // Definir puerto
 const port = 2800;
