@@ -39,10 +39,10 @@ export const Usuario = db.define(
             type: Sequelize.INTEGER,
         },
         created_at: {
-            type: Sequelize.DATETIME,
+            type: Sequelize.DATE,
         },
         updated_at: {
-            type: Sequelize.DATETIME,
+            type: Sequelize.DATE,
         },
         confirmar: {
             type: Sequelize.INTEGER,
