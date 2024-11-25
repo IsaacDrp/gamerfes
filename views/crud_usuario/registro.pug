@@ -12,7 +12,8 @@ html
       br
       #titulo
         p REGISTRAR
-      form#formulario(action='/registrar', method='POST')
+      form#formulario(action='/credenciales/registrar', method='POST')
+        input(type="hidden" name="_csrf" value=csrf)
         .Baseinputs
           label(for='username') Nombre de usuario
           .entrada
