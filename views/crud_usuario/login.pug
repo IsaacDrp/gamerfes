@@ -14,15 +14,26 @@ html
       br
       #titulo
         p GameFes
-      form#formulario(action='/registrar' method='POST')
+      form#formulario(action='/credenciales/acceder' method='POST')
+        // Campo CSRF
+        input(type='hidden' name='_csrf' value=csrf)
+        
         .Baseinputs
           label(for='email') Correo
           .entrada
             input#email(type='text' name='email' required)
+        
         .Baseinputs
           label(for='passwd') Contrase&ntilde;a
           .entrada
             input#passwd(type='password' name='passwd' required)
+        
+        // Mostrar errores si existen
+        if errores && errores.length > 0
+          .error
+            each error in errores
+              p= error.msg
+
         #botonLogin
           button.btn.btn-outline-dark(type='submit') Iniciar sesi&oacute;n
           a.btn.btn-outline-dark(href='/credenciales/registro') Crear cuenta
