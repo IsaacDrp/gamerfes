@@ -1,4 +1,6 @@
-form#tarjetaForm(action="/tarjetas" method="POST")
+form#tarjetaForm(action="/usuario/agregarTarjeta" method="POST")
+  // Campo CSRF
+  input(type='hidden' name='_csrf' value=csrf)
   .mb-3
     label(for="tarjeta_tipo" class="form-label") Tipo de tarjeta
     select#tarjeta_tipo(name="tarjeta_tipo" class="form-select" required)

@@ -12,6 +12,12 @@ block content
             .card-body
               h5= juego.title 
               p.card-text= juego.description
-              p= juego.image_src
+              p Precio: $#{juego.price}
+              p En inventario: #{juego.stock} unidades
+              p Plataforma: #{juego.plataforma}
               center
-                button.botonCard(data-id=juego.game_id) Agregar al carrito
+                form(method="POST" action="/agregar")
+                  input(type="hidden" name="_csrf" value=csrf)
+                  input(type="hidden" name="game_id" value=juego.game_id)
+                  input(type="hidden", name="platform" value=juego.game_platform)
+                  button.botonCard(type="submit") Agregar al carrito

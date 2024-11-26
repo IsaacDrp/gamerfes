@@ -1,0 +1,28 @@
+.titulo
+  h1.tituloConsola Mis Domicilios
+section
+  if domicilios.length
+    table.table.table-striped
+      thead
+        tr
+          th Estado
+          th Ciudad
+          th Código Postal
+          th Calle
+          th Colonia
+          th Número
+          th Acciones
+      tbody
+        each domicilio in domicilios
+          tr
+            td= domicilio.estado
+            td= domicilio.ciudad
+            td= domicilio.codigoPostal
+            td= domicilio.calle
+            td= domicilio.colonia
+            td= domicilio.numero
+            td
+              a.btn.btn-danger(href=`/domicilios/eliminar/${domicilio.id_domicilio}`) Eliminar
+  else
+    p.text-muted No hay domicilios registrados.
+    a.btn.btn-primary(href="/domicilios/nuevo") Agregar nuevo domicilio

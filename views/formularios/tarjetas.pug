@@ -1,0 +1,22 @@
+.titulo
+  h1.tituloConsola Mis Tarjetas
+section
+  if tarjetas.length
+    table.table.table-striped
+      thead
+        tr
+          th Tipo de Tarjeta
+          th Número
+          th Fecha de Vencimiento
+          th Acciones
+      tbody
+        each tarjeta in tarjetas
+          tr
+            td= tarjeta.tarjeta_tipo
+            td= '**** **** **** ' + tarjeta.card_number.slice(-4) 
+            td= tarjeta.fecha_vencimiento.toISOString().slice(0, 7)
+            td
+              a.btn.btn-danger(href=`/tarjetas/eliminar/${tarjeta.payment_method_id}`) Eliminar
+  else
+    p.text-muted No hay tarjetas registradas.
+  a.btn.btn-primary(href="/tarjetas/nueva") Agregar nueva tarjeta

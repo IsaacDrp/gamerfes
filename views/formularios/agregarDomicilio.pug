@@ -1,4 +1,6 @@
-form#domicilioForm(action="/domicilios" method="POST")
+form#domicilioForm(action="/usuario/agregarDomicilio" method="POST")
+  // Campo CSRF
+  input(type='hidden' name='_csrf' value=csrf)
   .mb-3
     label(for="estado" class="form-label") Estado
     input#estado(type="text" name="estado" class="form-control" required maxlength="50" placeholder="Ingrese el estado")
