@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../config/db.js";
 
 export const Carrito = db.define(
-    "carritos",
+    "carrito",
     {
         cart_id: {
             type: Sequelize.INTEGER,
@@ -22,7 +22,10 @@ export const Carrito = db.define(
             defaultValue: 0.0,
         },
     },
-    { timestamps: false }
+    { 
+        timestamps: false,
+        freezeTableName: true
+    }
 );
 
 export default Carrito;

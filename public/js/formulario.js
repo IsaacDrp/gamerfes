@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   botones.forEach((boton) => {
     boton.addEventListener("click", async () => {
       const colapsoId = boton.nextElementSibling.id;
-      const endpoint = `/infoUsuario/formularios/${colapsoId}`; // Define el endpoint según el ID
+      const endpoint = `/usuario/infoUsuario/formularios/${colapsoId}`; // Define el endpoint según el ID
       try {
         const response = await fetch(endpoint);
         if (!response.ok) throw new Error("Error al cargar el formulario");

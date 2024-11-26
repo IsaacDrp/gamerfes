@@ -3,7 +3,7 @@ import db from "../config/db.js";
 import Usuario from "./Usuario.js";
 
 export const Domicilio = db.define(
-    "domicilios",
+    "domicilio",
     {
         id_domicilio: {
             type: Sequelize.INTEGER,
@@ -35,7 +35,10 @@ export const Domicilio = db.define(
             allowNull: false,
         },
     },
-    { timestamps: false }
+    { 
+        freezeTableName: true, // Evita la pluralización del nombre de la tabla
+        timestamps: false, 
+    }
 );
 
 Usuario.hasMany(Domicilio, {

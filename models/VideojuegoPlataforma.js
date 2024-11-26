@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js";
-import Videojuego from "./Videojuego.js";
+import Videojuego from "./Videojuegos.js";
 import Plataforma from "./Plataforma.js";
 
 export const VideojuegoPlataforma = db.define(
-    "videojuego_plataformas",
+    "videojuego_plataforma",
     {
         game_platform: {
             type: Sequelize.INTEGER,
@@ -20,7 +20,10 @@ export const VideojuegoPlataforma = db.define(
             allowNull: false,
         },
     },
-    { timestamps: false }
+    { 
+        timestamps: false,
+        freezeTableName : true
+    }
 );
 
 Videojuego.hasMany(VideojuegoPlataforma, {

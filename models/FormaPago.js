@@ -3,7 +3,7 @@ import db from "../config/db.js";
 import Usuario from "./Usuario.js";
 
 export const FormaPago = db.define(
-    "formas_pago",
+    "forma_pago",
     {
         payment_method_id: {
             type: Sequelize.INTEGER,
@@ -27,7 +27,10 @@ export const FormaPago = db.define(
             allowNull: false,
         },
     },
-    { timestamps: false }
+    {
+        timestamps: false,
+        freezeTableName: true
+    }
 );
 
 Usuario.hasMany(FormaPago, {

@@ -1,6 +1,7 @@
 import Usuario from "../models/Usuario.js";
 import { correoRegistro } from "../helpers/correos.js";
-import { check } from "express-validator";
+import { check, validationResult} from "express-validator";
+import { idGenera, JWTGenera} from "../helpers/tokens.js";
 
 export const renderRegisterPage = (req, res) => {
     res.render("crud_usuario/registro.pug", {
@@ -17,9 +18,8 @@ export const renderLoginPage = (req, res) => {
 export const registrar = async (req, res) => {
 
     let valido = await validacionFormulario(req);
-    if (!valido.isEmpty()) {
-        return res.render("credenciales/registrar", {
-            pagina: "Alta Usuario",
+    if (!valido.isEmpty()) { // espero jamas se llegue aqui xd
+        return res.render("crud_usuario/registro.pug", {
             csrf: req.csrfToken(),
             errores: valido.array(),
         });
@@ -28,26 +28,33 @@ export const registrar = async (req, res) => {
     const usuario = await Usuario.create({
         username: req.body.username,
         apellido_paterno: req.body.apellido_paterno,
-        apellido_paterno: req.body.apellido_materno,
+        apellido_materno: req.body.apellido_materno,
         telefonoUsuario: req.body.telefonoUsuario,
         email: req.body.email,
-        passwd: req.body.passwd
+        passwd: req.body.passwd,
+        role_id: 1, //rol de usuario por defecto
+        //Generar token
+        token: idGenera()
     });
+    
     await usuario.save();
 
     //mandar correo
     correoRegistro({
-        nombre: usuario.nombre,
-        correo: usuario.correo,
+        nombre: usuario.username,
+        correo: usuario.email,
         token: usuario.token,
     });
-    res.render("credenciales/confirmacion.pug", {
-        //revisa tu correo de confirmacion
+    res.render("crud_usuario/confirmacion.pug", { //crear
+        titulo: "Cuenta generada con exito!!",
+        mensaje: "Solo falta un paso mas, por favor revisa tu correo para confirmar la cuenta y asi puedas usarla",
+        endpoint: "/",
+        tituloBoton: "Pagina principal",
         csrf: req.csrfToken(),
     })
 }
 
-const confirmarRegistroPorEnlace = async (req, res) => {
+export const confirmarRegistroPorEnlace = async (req, res) => {
     const { token } = req.params;
     //token valido
     const usuario = await Usuario.findOne({
@@ -55,9 +62,11 @@ const confirmarRegistroPorEnlace = async (req, res) => {
     });
 
     if (!usuario) {
-        res.render("credenciales/confirmado.pug", {
+        res.render("crud_usuario/confirmacion.pug", {
             titulo: "Autenticacion fallida",
-            mensaje: "No se pudo confirmar tu cuenta, intenta de nuevo"
+            mensaje: "No se pudo confirmar tu cuenta, intenta de nuevo",
+            endpoint: "/",
+            tituloBoton: "Pagina principal"
         })
     }
 
@@ -67,10 +76,11 @@ const confirmarRegistroPorEnlace = async (req, res) => {
     usuario.confirmar = true;
 
     await usuario.save();
-    res.render("credenciales/confirmar", {
-        titulo: "Su cuenta confirmo exitosamente",
-        mensaje: "Felicidades el registro se termino exitosamente",
-        enlace: "salto"
+    res.render("crud_usuario/confirmacion", {
+        titulo: "Su cuenta confirmo exitosamente!!",
+        mensaje: "Felicidades el registro se termino exitosamente.",
+        endpoint: "/credenciales/login",
+        tituloBoton: "Acceder"
     })
 
 }
@@ -88,6 +98,10 @@ async function validacionFormulario(req) {
         .notEmpty()
         .withMessage("Este campo no debe ser vacio")
         .run(req);
+    await check("telefonoUsuario")
+        .notEmpty()
+        .withMessage("Este campo es obligatorio")
+        .run(req)
     await check("passwd")
         .notEmpty()
         .withMessage("Clave no debe ser vacio")
@@ -100,37 +114,35 @@ async function validacionFormulario(req) {
     return salida;
 }
 
-//modificar todo
-const credenciales = async (req, res) => {
+
+export const credenciales = async (req, res) => {
     let valido = await validacionFormularioInicio(req);
     if (!valido.isEmpty()) {
-      return res.render("credenciales/login", {
-        pagina: "Alta Usuario",
+      return res.render("crud_usuario/login.pug", {
         csrf: req.csrfToken(),
         errores: valido.array(),
       });
     }
     //comprobar si el usuario existe
-    const { correo, password } = req.body;
-    const us = await Usuario.findOne({ where: { correo } });
+    const email = req.body.email
+    const passwd = req.body.passwd
+    const us = await Usuario.findOne({ where: { email } });
     if (!us) {
-      return res.render("credenciales/login", {
-        pagina: "Alta Usuario",
+      return res.render("crud_usuario/login.pug", {
         csrf: req.csrfToken(),
         errores: [{ msg: "El usuario no existe" }],
       });
     }
     //comprobar si el usuario esta confirmado
     if (!us.confirmar) {
-      return res.render("credenciales/login", {
-        pagina: "Alta Usuario",
+      return res.render("crud_usuario/login.pug", {
         csrf: req.csrfToken(),
         errores: [{ msg: "Tu cuenta no tiene confirmación, revisa tu correo" }],
       });
     }
     //comprobando el password
-    if (!us.verificandoClave(password)) {
-      return res.render("credenciales/login", {
+    if (!us.verificandoClave(passwd)) {
+      return res.render("crud_usuario/login.pug", {
         pagina: "Alta Usuario",
         csrf: req.csrfToken(),
         errores: [{ msg: "Credenciales no validas" }],
@@ -140,6 +152,7 @@ const credenciales = async (req, res) => {
     const token = JWTGenera(us);
     console.log(us);
     console.log(token);
+
     //crean jsonwebtoken
     return res
       .cookie("_token", token, {
@@ -147,7 +160,12 @@ const credenciales = async (req, res) => {
         //maxAge:60*1000
         //secure:true
       })
-      .redirect("/hotel/mostrarHotel");
+      .cookie("userEmail", email, {
+        httpOnly: true, // Hace que la cookie sea accesible solo desde el servidor
+        // secure: true, // Descomenta si usas HTTPS
+        //maxAge: 24 * 60 * 60 * 1000, // Expiración de la cookie (1 día)
+      })
+      .redirect("/usuario/infousuario");
   };
 
 async function validacionFormularioInicio(req) {

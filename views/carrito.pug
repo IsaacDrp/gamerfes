@@ -1,7 +1,38 @@
-extends ./layout/index.pug
+extends layout/index.pug
 
 block content
   h1 Carrito de Compras
-  p Nombre del Juego: #{juego.title}
-  p Vistas: #{vistas}
-  p Plataforma: #{game_platform}
+
+  if juegos.length === 0
+    p No tienes juegos en tu carrito.
+
+  else
+    table
+      thead
+        tr
+          th Título
+          th Imagen
+          th Precio
+          th Cantidad
+          th Stock
+          th Total
+
+      tbody
+        each juego in juegos
+          tr
+            td= juego.title
+            td
+              img(src= `/img/juegos/${juego.image_src}`, alt= juego.title, width="100")
+            td= juego.price.toFixed(2)
+            td= juego.cantidad
+            td= juego.stock
+            td= juego.total.toFixed(2)
+
+    - var subtotal = juegos.reduce((acc, juego) => acc + juego.total, 0);
+    tr
+      td(colspan="5" style="text-align: right") Subtotal:
+      td= subtotal.toFixed(2)
+
+    tr
+      td(colspan="5" style="text-align: right") Total:
+      td= subtotal.toFixed(2) 

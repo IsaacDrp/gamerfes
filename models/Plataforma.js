@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../config/db.js";
 
 export const Plataforma = db.define(
-    "plataformas",
+    "plataforma",
     {
         platform_id: {
             type: Sequelize.INTEGER,
@@ -17,7 +17,10 @@ export const Plataforma = db.define(
             type: Sequelize.TEXT,
         },
     },
-    { timestamps: false }
+    { 
+        timestamps: false,
+        freezeTableName: true
+    }
 );
 
 export default Plataforma;

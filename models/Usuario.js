@@ -1,10 +1,11 @@
 import { Sequelize } from "sequelize";
+import bcrypt from "bcrypt";
 import db from "../config/db.js";
 import Rol from "./Rol.js";
 import Carrito from "./Carrito.js";
 
 export const Usuario = db.define(
-    "usuarios",
+    "usuario",
     {
         user_id: {
             type: Sequelize.INTEGER,
@@ -38,36 +39,33 @@ export const Usuario = db.define(
         role_id: {
             type: Sequelize.INTEGER,
         },
-        created_at: {
-            type: Sequelize.DATE,
-        },
-        updated_at: {
-            type: Sequelize.DATE,
-        },
         confirmar: {
             type: Sequelize.INTEGER,
         },
         token: {
             type: Sequelize.STRING,
-        }
+        },
     },
-    { 
+    {
         hooks: {
             beforeCreate: async function (usuario) {
-              const rep = await bcrypt.genSalt(10);
-              usuario.password = await bcrypt.hash(usuario.password, rep);
+                const salt = await bcrypt.genSalt(10);
+                usuario.passwd = await bcrypt.hash(usuario.passwd, salt);
             },
-          },
-          scopes: {
-            elimiarClave: {
-              attributes: {
-                exclude: ["token", "password", "confirmar", "id_rls"],
-              },
+        },
+        scopes: {
+            eliminarClave: {
+                attributes: {
+                    exclude: ["token", "passwd", "confirmar", "role_id"],
+                },
             },
-          },
+        },
+        freezeTableName: true, // Evita la pluralización del nombre de la tabla
+        timestamps: false,    // Desactiva las columnas automáticas createdAt y updatedAt
     }
 );
 
+// Relaciones con otros modelos
 Rol.hasMany(Usuario, {
     foreignKey: { name: "role_id" },
 });
@@ -82,7 +80,9 @@ Carrito.belongsTo(Usuario, {
     foreignKey: { name: "user_id" },
 });
 
+// Método de instancia para verificar contraseñas
 Usuario.prototype.verificandoClave = function (password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  export default Usuario;
+    return bcrypt.compareSync(password, this.passwd);
+};
+
+export default Usuario;
